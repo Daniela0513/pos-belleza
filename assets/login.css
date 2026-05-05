@@ -1,0 +1,129 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* LADO IZQUIERDO */
+.login-left {
+  width: 50%;
+  background: linear-gradient(135deg, #ff4fa3, #7b2ff7);
+  color: white;
+  position: relative;
+}
+
+.login-left .overlay {
+  padding: 40px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.logo-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25); /* fondo suave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  width: 70%;
+  height: auto;
+  border-radius: 50%;
+}
+
+
+.stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats strong {
+  font-size: 24px;
+  display: block;
+}
+
+/* LADO DERECHO */
+.login-right {
+  width: 50%;
+  background: #fff6fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.login-card h1 {
+  margin-bottom: 8px;
+}
+
+.login-card p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.login-card label {
+  font-size: 14px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.login-left .overlay {
+  margin-top: 80px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff4fa3, #7b2ff7);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin {
+  margin-top: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.back {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+}
