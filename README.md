@@ -52,9 +52,10 @@ Pensado para ser desplegado usando GitHub Pages.
 
 ---
 
-## ✨ Próximas mejoras
+## 👥 Trabajo en equipo
 
-- Backend con Node.js
-- Base de datos
-- Autenticación real
-- Control de inventario
+- Cada integrante trabaja en una vista distinta
+- Siempre hacer pull antes de trabajar
+- Commits con mensajes claros
+- No modificar código de otros sin avisar
+  ``
