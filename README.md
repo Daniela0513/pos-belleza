@@ -1,3 +1,7 @@
+# pos-belleza
+
+Aplicativo para el manejo de inventario y control de ventas de una tienda de belleza.
+
 # POS - Tienda de Belleza 💄
 
 Sistema POS (Point of Sale) para una tienda de belleza, desarrollado como aplicación web.
