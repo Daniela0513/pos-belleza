@@ -1,0 +1,256 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f6dde6;
+}
+
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background: white;
+  padding: 20px;
+  border-right: 2px solid #eee;
+}
+
+
+.login-left {
+  position: relative;
+}
+
+
+.logoLogin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 450px; /* tamaño grande */
+  
+  opacity: 0.15; /* efecto marca de agua */
+  
+  pointer-events: none; /* no interfiere */
+}
+
+
+.logo {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  margin: 8px 0;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #444;
+}
+
+.sidebar .active {
+  background: #f8c5d6;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px 50px;
+
+
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  background: #e6a3b5;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #f3f3f3;
+  padding: 20px;
+  border-radius: 15px;
+  width: 200px;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  gap: 20px;
+}
+
+.panel {
+  flex: 1;
+  background: #f3f3f3;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* ORDERS */
+.order {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  background: white;
+  border-radius: 10px;
+}
+
+
+.status.pending {
+  color: red;
+}
+
+.status.transit {
+  color: #007bff;
+}
+
+.status.completed {
+  color: green;
+}
+
+
+/* LOW STOCK */
+.low-product {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid red;
+  color: red;
+}
+
+/* BOTÓN */
+.btn-add {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+/* TABLA */
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.inventory-table th {
+  background: #f4c2d7;
+  padding: 12px;
+  text-align: left;
+}
+
+.inventory-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* STOCK */
+.stock-low {
+  color: red;
+  font-weight: bold;
+}
+
+.stock-medium {
+  color: orange;
+  font-weight: bold;
+}
+
+.stock-ok {
+  color: green;
+  font-weight: bold;
+}
+
+/* ESTADO */
+.status-low {
+  color: red;
+}
+
+.status-medium {
+  color: orange;
+}
+
+.status-ok {
+  color: green;
+}
+
+
+/* FILTROS tabla inventario */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  align-items: center;
+}
+
+/* INPUT BUSCAR */
+.search-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+/* SELECT */
+.filter-categoria, .filter-estado {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* BOTÓN */
+.btn-add {
+  background: #f06292;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: #f06292;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background: #d4054a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn-close {
+  background: #e4a0b7;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}

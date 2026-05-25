@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventario | Afrodita</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+
+  <body>
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <img src="../assets/images/logo.jpeg" class="logo" />
+
+        <nav>
+          <a href="dashboard.html">Dashboard</a>
+          <a class="active">Inventario</a>
+          <a>Órdenes de Compra</a>
+          <a>Registro de Ventas</a>
+          <a>Catálogo</a>
+        </nav>
+      </aside>
+
+      <!-- CONTENIDO -->
+      <main class="content">
+        <!-- HEADER -->
+        <header class="topbar">
+          <span>Rol: Administrador</span>
+          <span>Inventario actualizado</span>
+        </header>
+
+        <h1>Gestión de Inventario</h1>
+        <p>Control y visualización de productos</p>
+
+        <!-- CARDS -->
+        <section class="cards">
+          <div class="card">
+            <span>Total Productos</span>
+            <h2>1,284</h2>
+          </div>
+
+          <div class="card">
+            <span>Stock Bajo</span>
+            <h2>5</h2>
+          </div>
+
+          <div class="card">
+            <span>Valor Total</span>
+            <h2>$125,000</h2>
+          </div>
+
+          <div class="card">
+            <span>Categorías</span>
+            <h2>8</h2>
+          </div>
+        </section>
+
+        <!-- FILTROS -->
+        <div class="filters">
+          <input
+            type="text"
+            placeholder="🔍 Buscar productos"
+            class="search-input"
+          />
+
+          <select class="filter-categoria">
+            <option>Todas</option>
+            <option>Maquillaje</option>
+            <option>Cuidado Capilar</option>
+            <option>Cuidado Facial</option>
+          </select>
+
+          <select class="filter-estado">
+            <option>Todos</option>
+            <option>Disponible</option>
+            <option>Bajo</option>
+            <option>Crítico</option>
+          </select>
+
+          <button class="btn-add">+ Agregar Producto</button>
+        </div>
+
+        <!-- TABLA -->
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>SKU</th>
+
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Marca</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>SKU-001</td>
+              <td>Base Líquida Tono 03</td>
+              <td>Maquillaje</td>
+              <td>Melu</td>
+              <td>$45,000</td>
+              <td class="stock-low">5</td>
+              <td class="status-low">Crítico</td>
+              <td>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>SKU-002</td>
+              <td>Labial Satinado</td>
+              <td>Maquillaje</td>
+              <td>Melu</td>
+              <td>$25,000</td>
+              <td class="stock-low">8</td>
+              <td class="status-low">Crítico</td>
+              <td>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>SKU-003</td>
+              <td>Shampoo Keratina</td>
+              <td>Cuidado Capilar</td>
+              <td>Melu</td>
+              <td>$32,000</td>
+              <td class="stock-medium">18</td>
+              <td class="status-medium">Bajo</td>
+              <td>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>SKU-004</td>
+              <td>Crema Facial</td>
+              <td>Cuidado Facial</td>
+              <td>Melu</td>
+              <td>$38,000</td>
+              <td class="stock-ok">50</td>
+              <td class="status-ok">Disponible</td>
+              <td>
+                <button class="btn-edit">Editar</button>
+                <button class="btn-delete">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <script src="../assets/inventario.js"></script>
+  </body>
+</html>

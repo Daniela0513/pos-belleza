@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard Afrodita</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+
+  <body>
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <img src="../assets/images/logo.jpeg" class="logo" />
+
+        <nav>
+          <a class="active" href="dashboard.html">Dashboard</a>
+          <a href="inventario.html">Inventario</a>
+          <a>Órdenes de Compra</a>
+          <a>Registro de Ventas</a>
+          <a>Catálogo</a>
+          <button class="btn-close" onclick="logout()">Cerrar sesión</button>
+        </nav>
+      </aside>
+
+      <!-- CONTENIDO -->
+      <main class="content">
+        <!-- HEADER -->
+        <header class="topbar">
+          <div class="left">Rol: Administrador</div>
+          <div class="right">06/05/2026 08:32</div>
+        </header>
+
+        <h1>Dashboard - Administrador</h1>
+        <p>Vista general de tu negocio</p>
+
+        <!-- CARDS -->
+        <section class="cards">
+          <div class="card">
+            <span>Total Productos</span>
+            <h2>1,284</h2>
+          </div>
+
+          <div class="card">
+            <span>Órdenes Pendientes</span>
+            <h2>23</h2>
+          </div>
+
+          <div class="card">
+            <span>Proveedores Activos</span>
+            <h2>45</h2>
+          </div>
+
+          <div class="card">
+            <span>Ventas del Mes</span>
+            <h2>$48,567</h2>
+          </div>
+        </section>
+
+        <!-- GRID -->
+        <section class="grid">
+          <!-- ÓRDENES -->
+          <div class="panel">
+            <h2>Órdenes Recientes</h2>
+
+            <div class="order">
+              <div>
+                <strong>ORD-001</strong>
+                <p>Laura Martínez</p>
+              </div>
+              <div class="status pending">$1,250</div>
+            </div>
+
+            <div class="order">
+              <div>
+                <strong>ORD-002</strong>
+                <p>Distribuidora Bella</p>
+              </div>
+              <div class="status transit">$2,800</div>
+            </div>
+          </div>
+
+          <!-- STOCK BAJO -->
+          <div class="panel">
+            <h2>Productos con Stock Bajo</h2>
+
+            <div class="low-product">
+              <div>
+                <strong>Base Líquida Tono 03</strong>
+                <p>Mínimo: 20 unidades</p>
+              </div>
+              <span>5</span>
+            </div>
+
+            <div class="low-product">
+              <div>
+                <strong>Labial Satinado</strong>
+                <p>Mínimo: 25 unidades</p>
+              </div>
+              <span>8</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="../assets/main.js"></script>
+  </body>
+</html>
