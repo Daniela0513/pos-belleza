@@ -18,6 +18,7 @@
           <a>Órdenes de Compra</a>
           <a>Registro de Ventas</a>
           <a>Catálogo</a>
+          <button class="btn-close" onclick="logout()">Cerrar sesión</button>
         </nav>
       </aside>
 
@@ -154,8 +155,61 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- MODAL AGREGAR PRODUCTO -->
+        <div id="modalProducto" class="modal">
+          <div class="modal-content">
+            <h2>Agregar Producto</h2>
+            <p>Ingresa los detalles del nuevo producto al inventario</p>
+
+            <form id="formProducto">
+              <label>Nombre Producto</label>
+              <input type="text" id="nombre" />
+
+              <div class="row">
+                <div>
+                  <label>SKU</label>
+                  <input type="text" id="sku" />
+                </div>
+
+                <div>
+                  <label>Marca</label>
+                  <input type="text" id="marca" />
+                </div>
+              </div>
+
+              <label>Categoría</label>
+              <select id="categoria">
+                <option>Maquillaje</option>
+                <option>Cuidado Capilar</option>
+                <option>Cuidado Facial</option>
+              </select>
+
+              <div class="row">
+                <div>
+                  <label>Stock Actual</label>
+                  <input type="number" id="stock" />
+                </div>
+
+                <div>
+                  <label>Stock Mínimo</label>
+                  <input type="number" id="stockMin" />
+                </div>
+              </div>
+
+              <label>Precio</label>
+              <input type="number" id="precio" />
+
+              <div class="modal-buttons">
+                <button type="button" id="btnCancelar">Cancelar</button>
+                <button type="submit" class="btn-add">Agregar producto</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </main>
     </div>
+
     <script src="../assets/inventario.js"></script>
   </body>
 </html>

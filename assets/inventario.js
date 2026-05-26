@@ -1,97 +1,222 @@
-const filas = document.querySelectorAll(".inventory-table tbody tr");
+// =============================
+//  BASE DE DATOS (LOCAL)
+// =============================
+let productos = JSON.parse(localStorage.getItem("productos")) || [];
 
+// Guardar en localStorage
+function guardarProductos() {
+  localStorage.setItem("productos", JSON.stringify(productos));
+}
+
+// =============================
+//  RENDER TABLA
+// =============================
+function renderTabla() {
+  const tbody = document.querySelector(".inventory-table tbody");
+  tbody.innerHTML = "";
+
+  productos.forEach((p, index) => {
+    let estado = "Disponible";
+    let color = "green";
+
+    if (p.stock < 10) {
+      estado = "Crítico";
+      color = "red";
+    } else if (p.stock <= 25) {
+      estado = "Bajo";
+      color = "orange";
+    }
+
+    const fila = `
+      <tr>
+        <td>${p.sku}</td>
+        <td>${p.nombre}</td>
+        <td>${p.categoria}</td>
+        <td>${p.marca}</td>
+        <td>$${p.precio}</td>
+        <td style="color:${color}">${p.stock}</td>
+        <td style="color:${color}">${estado}</td>
+        <td>
+          <button class="btn-edit" data-index="${index}">Editar</button>
+          <button class="btn-delete" data-index="${index}">Eliminar</button>
+        </td>
+      </tr>
+    `;
+
+    tbody.innerHTML += fila;
+  });
+}
+
+// Cargar tabla al iniciar
+renderTabla();
+
+// =============================
 // 🔎 BUSCADOR
+// =============================
 document.querySelector(".search-input").addEventListener("input", function () {
   const texto = this.value.toLowerCase();
 
-  filas.forEach((fila) => {
-    const nombre = fila.cells[1].innerText.toLowerCase();
+  const filtrados = productos.filter((p) =>
+    p.nombre.toLowerCase().includes(texto),
+  );
 
-    fila.style.display = nombre.includes(texto) ? "" : "none";
-  });
+  renderFiltrados(filtrados);
 });
 
-// 🔽 FILTRO CATEGORÍA
+// =============================
+// 🔽 FILTROS
+// =============================
+
+// Categoría
 document
   .querySelector(".filter-categoria")
   .addEventListener("change", function () {
     const categoria = this.value;
 
-    filas.forEach((fila) => {
-      const cat = fila.cells[2].innerText;
+    if (categoria === "Todas") {
+      renderTabla();
+      return;
+    }
 
-      if (categoria === "Todas" || cat === categoria) {
-        fila.style.display = "";
-      } else {
-        fila.style.display = "none";
-      }
-    });
+    const filtrados = productos.filter((p) => p.categoria === categoria);
+
+    renderFiltrados(filtrados);
   });
 
-// ⚠️ FILTRO ESTADO
+// Estado
 document
   .querySelector(".filter-estado")
   .addEventListener("change", function () {
     const estado = this.value;
 
-    filas.forEach((fila) => {
-      const est = fila.cells[6].innerText;
-
-      if (estado === "Todos" || est === estado) {
-        fila.style.display = "";
-      } else {
-        fila.style.display = "none";
-      }
+    const filtrados = productos.filter((p) => {
+      if (estado === "Todos") return true;
+      if (estado === "Crítico") return p.stock < 10;
+      if (estado === "Bajo") return p.stock >= 10 && p.stock <= 25;
+      if (estado === "Disponible") return p.stock > 25;
     });
+
+    renderFiltrados(filtrados);
   });
 
-// ❌ ELIMINAR PRODUCTO
-document.querySelectorAll(".btn-delete").forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    const confirmar = confirm("¿Eliminar este producto?");
+// Render filtrados
+function renderFiltrados(lista) {
+  const tbody = document.querySelector(".inventory-table tbody");
+  tbody.innerHTML = "";
 
-    if (confirmar) {
-      btn.closest("tr").remove();
+  lista.forEach((p) => {
+    let estado = "Disponible";
+    let color = "green";
+
+    if (p.stock < 10) {
+      estado = "Crítico";
+      color = "red";
+    } else if (p.stock <= 25) {
+      estado = "Bajo";
+      color = "orange";
+    }
+
+    const fila = `
+      <tr>
+        <td>${p.sku}</td>
+        <td>${p.nombre}</td>
+        <td>${p.categoria}</td>
+        <td>${p.marca}</td>
+        <td>$${p.precio}</td>
+        <td style="color:${color}">${p.stock}</td>
+        <td style="color:${color}">${estado}</td>
+        <td>
+          <button class="btn-edit">Editar</button>
+          <button class="btn-delete">Eliminar</button>
+        </td>
+      </tr>
+    `;
+
+    tbody.innerHTML += fila;
+  });
+}
+
+// =============================
+//  EDITAR /  ELIMINAR
+// =============================
+document
+  .querySelector(".inventory-table tbody")
+  .addEventListener("click", function (e) {
+    //  ELIMINAR
+    if (e.target.classList.contains("btn-delete")) {
+      const index = e.target.dataset.index;
+
+      if (confirm("¿Eliminar este producto?")) {
+        productos.splice(index, 1);
+        guardarProductos();
+        renderTabla();
+      }
+    }
+
+    //  EDITAR
+    if (e.target.classList.contains("btn-edit")) {
+      const index = e.target.dataset.index;
+      const p = productos[index];
+
+      const nuevoNombre = prompt("Nombre:", p.nombre);
+      const nuevoPrecio = prompt("Precio:", p.precio);
+      const nuevoStock = prompt("Stock:", p.stock);
+
+      if (nuevoNombre && nuevoPrecio && nuevoStock) {
+        p.nombre = nuevoNombre;
+        p.precio = parseInt(nuevoPrecio);
+        p.stock = parseInt(nuevoStock);
+
+        guardarProductos();
+        renderTabla();
+      }
     }
   });
+
+// =============================
+// MODAL
+// =============================
+const modal = document.getElementById("modalProducto");
+const btnAdd = document.querySelector(".btn-add");
+const btnCancelar = document.getElementById("btnCancelar");
+
+// abrir
+btnAdd.addEventListener("click", () => {
+  modal.style.display = "flex";
 });
 
-// ✏️ EDITAR PRODUCTO
-document.querySelectorAll(".btn-edit").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const fila = btn.closest("tr");
+// cerrar
+btnCancelar.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
-    let nombre = fila.cells[1].innerText;
-    let precio = fila.cells[4].innerText.replace("$", "").replace(",", "");
-    let stock = fila.cells[5].innerText;
+// =============================
+//AGREGAR PRODUCTO
+// =============================
+document
+  .getElementById("formProducto")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const nuevoNombre = prompt("Editar nombre:", nombre);
-    const nuevoPrecio = prompt("Editar precio:", precio);
-    const nuevoStock = prompt("Editar stock:", stock);
+    const producto = {
+      nombre: document.getElementById("nombre").value,
+      sku: document.getElementById("sku").value,
+      marca: document.getElementById("marca").value,
+      categoria: document.getElementById("categoria").value,
+      stock: parseInt(document.getElementById("stock").value),
+      precio: parseInt(document.getElementById("precio").value),
+    };
 
-    if (nuevoNombre && nuevoPrecio && nuevoStock) {
-      fila.cells[1].innerText = nuevoNombre;
-      fila.cells[4].innerText = "$" + nuevoPrecio;
-      fila.cells[5].innerText = nuevoStock;
+    productos.push(producto);
 
-      actualizarEstado(fila);
-    }
+    guardarProductos();
+    renderTabla();
+
+    modal.style.display = "none";
+    this.reset();
   });
-});
 
-// 🔄 ACTUALIZAR ESTADO SEGÚN STOCK
-function actualizarEstado(fila) {
-  const stock = parseInt(fila.cells[5].innerText);
-  const estadoCell = fila.cells[6];
-
-  if (stock < 10) {
-    estadoCell.innerText = "Crítico";
-    estadoCell.style.color = "red";
-  } else if (stock <= 25) {
-    estadoCell.innerText = "Bajo";
-    estadoCell.style.color = "orange";
-  } else {
-    estadoCell.innerText = "Disponible";
-    estadoCell.style.color = "green";
-  }
+function logout() {
+  localStorage.removeItem("usuario");
+  window.location.href = "../login.html";
 }
