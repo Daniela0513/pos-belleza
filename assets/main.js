@@ -20,3 +20,22 @@ function logout() {
   localStorage.removeItem("usuario");
   window.location.href = "../login.html";
 }
+
+function actualizarHora() {
+  const ahora = new Date();
+
+  const fecha = ahora.toLocaleDateString("es-CO");
+  const hora = ahora.toLocaleTimeString("es-CO", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  document.getElementById("fecha-hora").innerText = `${fecha} ${hora}`;
+}
+
+// Ejecutar inmediatamente
+actualizarHora();
+
+// Actualizar cada segundo
+setInterval(actualizarHora, 1000);
