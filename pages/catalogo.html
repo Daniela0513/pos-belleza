@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de Productos</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#fdeef3;
+    padding:30px;
+}
+
+
+.encabezado{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.encabezado h1{
+    color:#172b4d;
+}
+
+.encabezado p{
+    color:#666;
+    margin-top:5px;
+}
+
+.btn-nuevo{
+    background:#ff1493;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+
+
+.buscador{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.buscador input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.buscador select{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+
+.estadisticas{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.info{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+}
+
+.info h3{
+    color:#666;
+    margin-bottom:15px;
+}
+
+.info span{
+    font-size:35px;
+    font-weight:bold;
+    color:#172b4d;
+}
+
+
+
+.productos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.contenido{
+    padding:15px;
+}
+
+.contenido h2{
+    font-size:18px;
+    color:#172b4d;
+    margin-bottom:10px;
+}
+
+.contenido p{
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.categoria{
+    color:#ff1493;
+    font-weight:bold;
+}
+
+.precio{
+    font-size:25px;
+    margin:10px 0;
+    color:#172b4d;
+}
+
+.acciones{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.acciones button{
+    flex:1;
+    border:none;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.ver{
+    background:#ffe4ef;
+    color:#ff1493;
+}
+
+.editar{
+    background:#fff4cc;
+}
+
+.eliminar{
+    background:#ffd6d6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="encabezado">
+    <div>
+        <h1>Catálogo de Productos</h1>
+        <p>Explora y gestiona tu catálogo</p>
+    </div>
+
+    <button class="btn-nuevo">
+        <i class="fa-solid fa-plus"></i>
+        Nuevo Producto
+    </button>
+</div>
+
+<div class="buscador">
+    <input type="text" placeholder="Buscar productos...">
+    <select>
+        <option>Todas las categorías</option>
+        <option>Maquillaje</option>
+        <option>Fragancias</option>
+        <option>Cuidado Facial</option>
+    </select>
+</div>
+
+<div class="estadisticas">
+
+    <div class="info">
+        <h3>Total Productos</h3>
+        <span>12</span>
+    </div>
+
+    <div class="info">
+        <h3>Categorías</h3>
+        <span>6</span>
+    </div>
+
+    <div class="info">
+        <h3>Precio Promedio</h3>
+        <span>$15</span>
+    </div>
+
+</div>
+
+<div class="productos">
+
+    
+
+    <script>
+        const productos = [
+        ["Labial Rojo","https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600"],
+        ["Base Líquida","https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600"],
+        ["Paleta Nude","https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600"],
+        ["Sérum Vitamina C","https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600"],
+        ["Perfume Floral","https://images.unsplash.com/photo-1541643600914-78b084683601?w=600"],
+        ["Esmalte Rosa","https://images.unsplash.com/photo-1583241800698-9f2e5b1d6b3f?w=600"],
+        ["Set de Brochas","https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600"],
+        ["Corrector Premium","https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600"],
+        ["Rubor Rosado","https://images.unsplash.com/photo-1631214524020-3c4a4e6bff11?w=600"],
+        ["Delineador Negro","https://images.unsplash.com/photo-1631730486782-d0b6c59d57c5?w=600"],
+        ["Polvo Compacto","https://images.unsplash.com/photo-1619451334792-150fd785ee74?w=600"],
+        ["Máscara de Pestañas","https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600"]
+        ];
+
+        document.write(productos.map(p=>`
+        <div class="card">
+
+            <img src="${p[1]}">
+
+            <div class="contenido">
+
+                <h2>${p[0]}</h2>
+
+                <p>Producto de belleza profesional.</p>
+
+                <span class="categoria">Maquillaje</span>
+
+                <div class="precio">$15</div>
+
+                <small>Proveedor: Beauty Store</small>
+
+                <div class="acciones">
+
+                    <button class="ver"
+                    onclick="alert('Ver ${p[0]}')">
+                    <i class="fa-solid fa-eye"></i>
+                    </button>
+
+                    <button class="editar"
+                    onclick="alert('Editar ${p[0]}')">
+                    <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="eliminar"
+                    onclick="alert('Eliminar ${p[0]}')">
+                    <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        `).join(''));
+    </script>
+
+</div>
+
+</body>
+</html>
